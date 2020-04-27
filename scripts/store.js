@@ -9,6 +9,7 @@ export default {
     findAndToggleChecked,
     findAndUpdateName,
     findAndDelete,
+    toggleCheckedFilter,
   };
 
   function findById(id){
@@ -28,6 +29,7 @@ export default {
 
   function findAndToggleChecked(id){
     let item = findById(id);
+    console.log(item.checked)
     item.checked = !item.checked;
   }
 
@@ -48,3 +50,6 @@ export default {
 
   }
 
+  function toggleCheckedFilter (){
+    this.hideCheckedItems = !this.hideCheckedItems;
+  }
