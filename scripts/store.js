@@ -6,6 +6,7 @@ export default {
     hideCheckedItems,
     findById,
     addItem,
+    getItems,
     findAndToggleChecked,
     findAndUpdateName,
     findAndDelete,
@@ -16,11 +17,15 @@ export default {
     return items.find(element=>id===element.id)
   }
 
+  function getItems() {
+    return items;
+  }
+
   function addItem(name){
     try{
       item.validateName(name);
       items.push(item.create(name));
-      
+
     }
     catch (err){
 
@@ -42,10 +47,10 @@ export default {
       console.log(`Cannot update name: ${error.message}`)
     }
   }
-  
+
 function findAndDelete (id) {
     let item = findById(id);
-    this.items = this.items.filter(element => item.id !== element.id);
+    items = items.filter(element => item.id !== element.id);
 }
 
 

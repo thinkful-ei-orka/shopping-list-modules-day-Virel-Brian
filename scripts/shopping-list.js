@@ -32,7 +32,7 @@ const generateShoppingItemsString = function (shoppingList) {
 
 const render = function () {
   // Filter item list if store prop is true by item.checked === false
-  let items = [...store.items];
+  let items = store.getItems();
   if (store.hideCheckedItems) {
     items = items.filter(item => !item.checked);
   }
@@ -43,7 +43,9 @@ const render = function () {
 };
 
 const addItemToShoppingList = function (itemName) {
-  store.items.push({ id: cuid(), name: itemName, checked: false });
+  // store.items.push({ id: cuid(), name: itemName, checked: false });
+
+  store.addItem(itemName);
 };
 
 const handleNewItemSubmit = function () {
@@ -73,7 +75,7 @@ const getItemIdFromElement = function (item) {
 
 /**
  * Responsible for deleting a list item.
- * @param {string} id 
+ * @param {string} id
  */
 const handleDeleteItemClicked = function () {
   // like in `handleItemCheckClicked`, we use event delegation
